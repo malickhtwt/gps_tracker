@@ -34,5 +34,4 @@ def data():
 
 if __name__ == "__main__":
     # use host='0.0.0.0' so STM32 can reach your computer over LAN
-    #app.run(host="0.0.0.0", port=5000, debug=True)
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
