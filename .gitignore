@@ -1,0 +1,10 @@
+# virtual environment
+venv/
+
+# Ignore specific files in lib/
+lib/dissassembly.txt
+lib/final.elf
+lib/final.map
+lib/test.c
+lib/make_script.sh
+lib/gdb.cmds

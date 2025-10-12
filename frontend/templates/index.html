@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPS Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        // initial map view (default Dakar area)
+        const map = L.map('map').setView([29.7604, -95.3698], 13);
+
+        // OpenStreetMap tiles (free)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const marker = L.marker([29.7604, -95.3698]).addTo(map);
+
+        async function updateMarker() {
+            const res = await fetch('/data');
+            const pos = await res.json();
+
+            if (pos.lat && pos.lon) {
+                marker.setLatLng([pos.lat, pos.lon]);
+                map.panTo([pos.lat, pos.lon]);
+            }
+        }
+
+        // fetch new coordinates every 2 seconds
+        setInterval(updateMarker, 2000);
+    </script>
+</body>
+</html>
