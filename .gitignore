@@ -1,8 +1,11 @@
 # virtual environment
 venv/
 
+# tests
+/tests
+
 # Ignore specific files in lib/
-lib/dissassembly.txt
+lib/disassembly.txt
 lib/final.elf
 lib/final.map
 lib/test.c
