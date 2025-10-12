@@ -3,7 +3,7 @@ venv/
 
 # tests
 tests/
-
+frontend/tests/
 
 # Ignore specific files in lib/
 lib/disassembly.txt
